@@ -5,6 +5,7 @@ import models.Word;
 
 import java.io.File;
 import java.lang.reflect.Field;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -21,7 +22,19 @@ public class DataInput {
         In inWords = new In(wordsFile);
 
         String delims = "�\t";
+        List<Word> words = new ArrayList<Word>();
+        while(!inWords.isEmpty()){
+            String wordDetails = inWords.readLine();
+            String[] wordTokens = wordDetails.split(delims);
+            if(wordTokens.length == 2){
+                String spanishWord = wordTokens[0];
+                String englishWord = wordTokens[1];
 
-        return null;
+                words.add(new Word(spanishWord, englishWord));
+            }else{
+                throw new Exception("Invalid token length: " + wordTokens.length);
+            }
+        }
+        return words;
     }
 }
