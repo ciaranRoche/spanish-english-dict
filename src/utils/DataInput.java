@@ -21,7 +21,7 @@ public class DataInput {
         File wordsFile = new File(filename);
         In inWords = new In(wordsFile);
 
-        String delims = "�\t";
+        String delims = "[\t]";
         List<Word> words = new ArrayList<Word>();
         while(!inWords.isEmpty()){
             String wordDetails = inWords.readLine();
