@@ -5,7 +5,7 @@ import static com.google.common.base.MoreObjects.toStringHelper;
 /**
  * Created by ciaran on 07/02/2017.
  */
-public class Word {
+public class Word implements Comparable<Word>{
     public String spanishWord;
     public String englishWord;
 
@@ -34,5 +34,10 @@ public class Word {
 
     public String getEnglishWord(){
         return englishWord;
+    }
+
+    @Override
+    public int compareTo(Word o) {
+        return this.spanishWord.compareTo(o.spanishWord);
     }
 }

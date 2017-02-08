@@ -2,6 +2,7 @@ package controllers;
 
 import models.Word;
 import utils.DataInput;
+import utils.Heap;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -13,8 +14,9 @@ import java.util.Map;
  */
 public class DictionaryAPI {
 
-    public Map<Long, Word> testIndex = new HashMap<>();
+
     public static List<Word> testInput = new ArrayList<>();
+    private static Heap<Word> testHeap = new Heap<Word>();
 
 
     public DictionaryAPI(){}
@@ -22,14 +24,15 @@ public class DictionaryAPI {
     public static void main(String [] args) throws Exception {
         System.out.print("Start test");
         prime();
-        System.out.println(testInput.toString());
+        System.out.println(testHeap.toString());
     }
 
     public static void prime() throws Exception{
         DataInput loader = new DataInput();
         List<Word> words = loader.loadData("././data/spanish");
         for(Word word : words){
-            testInput.add(word);
+            testHeap.add(word);
+            //testInput.add(word);
         }
     }
 }
