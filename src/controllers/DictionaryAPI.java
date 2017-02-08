@@ -14,10 +14,7 @@ import java.util.Map;
  */
 public class DictionaryAPI {
 
-
-    public static List<Word> testInput = new ArrayList<>();
-    private static Heap<Word> testHeap = new Heap<Word>();
-
+    private static Heap<Word> testHeap = new Heap<>();
 
     public DictionaryAPI(){}
 
@@ -25,6 +22,14 @@ public class DictionaryAPI {
         System.out.print("Start test");
         prime();
         System.out.println(testHeap.toString());
+        addWord("test", "ztest");
+        System.out.println(testHeap.toString());
+        addWord("test", "atest");
+        System.out.println(testHeap.toString());
+    }
+
+    public static void addWord(String spanishWord, String englishWord){
+        testHeap.add(new Word(spanishWord, englishWord));
     }
 
     public static void prime() throws Exception{
@@ -32,7 +37,6 @@ public class DictionaryAPI {
         List<Word> words = loader.loadData("././data/spanish");
         for(Word word : words){
             testHeap.add(word);
-            //testInput.add(word);
         }
     }
 }

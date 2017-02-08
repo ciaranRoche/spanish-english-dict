@@ -38,6 +38,6 @@ public class Word implements Comparable<Word>{
 
     @Override
     public int compareTo(Word o) {
-        return this.spanishWord.compareTo(o.spanishWord);
+        return this.englishWord.compareTo(o.englishWord);
     }
 }
