@@ -15,8 +15,9 @@ public class Heap<T extends Comparable<T>> {
     }
 
     public void siftUp(){
+        boolean check = true;
         int k = heap.size() - 1;
-        while (k > 0){
+        while ((k > 0)&&(check)){
             int p = (k-1)/2;
             T item = heap.get(k);
             T parent = heap.get(p);
@@ -27,15 +28,16 @@ public class Heap<T extends Comparable<T>> {
 
                 k = p;
             }else{
-                break;
+                check = false;
             }
         }
     }
 
     public void siftDown(){
+        boolean check = true;
         int k = 0;
         int l = 2*k+1;
-        while (l<heap.size()){
+        while ((l<heap.size())&&(check)){
             int max = l, r=l+l;
             if(r < heap.size()){
                 if(heap.get(r).compareTo(heap.get(l))>0){
@@ -49,7 +51,7 @@ public class Heap<T extends Comparable<T>> {
                 k = max;
                 l = 2*k+1;
             }else{
-                break;
+                check = false;
             }
         }
     }

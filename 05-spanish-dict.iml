@@ -10,5 +10,6 @@
     <orderEntry type="library" name="guava-18.0" level="project" />
     <orderEntry type="library" name="xstream-1.4.8" level="project" />
     <orderEntry type="library" name="stdlib-package" level="project" />
+    <orderEntry type="library" name="asg.cliche" level="project" />
   </component>
 </module>
