@@ -16,6 +16,8 @@ public class DictionaryAPI {
     private static Heap<Word> testHeap = new Heap<>();
     private static ArrayList<Word> testArray = new ArrayList<>();
 
+    public static String match;
+
     public DictionaryAPI(){}
 
     public static Word addWord(String spanishWord, String englishWord){
@@ -29,8 +31,13 @@ public class DictionaryAPI {
         return testArray.toString();
     }
 
-    public static void searchHeap(String s){
-
+    public static String searchHeap(String s){
+        for(Word word : testArray){
+            if(word.getSpanishWord().toLowerCase().startsWith(s)){
+                match = word.getEnglishWord();
+            }
+        }
+        return match;
     }
 
 

@@ -35,9 +35,14 @@ public class Client {
     }
 
     @Command(description = "Add a Word")
-    public String addAWord(@Param(name="Spanish Word")String spanishWord,
+    public String addWord(@Param(name="Spanish Word")String spanishWord,
                            @Param(name="English Word")String englishWord){
         word =  dicAPI.addWord(spanishWord, englishWord);
         return word.spanishWord + " added.\nThank You.";
+    }
+
+    @Command(description = "Find a Word")
+    public String findWord(@Param(name="Spanish Word")String spanishWord){
+        return "The English for " + spanishWord + " is " + dicAPI.searchHeap(spanishWord) ;
     }
 }
