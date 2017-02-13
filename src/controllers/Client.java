@@ -4,6 +4,7 @@ import asg.cliche.Command;
 import asg.cliche.Param;
 import asg.cliche.Shell;
 import asg.cliche.ShellFactory;
+import com.google.common.base.Stopwatch;
 import models.Word;
 import utils.Heap;
 
@@ -15,11 +16,12 @@ public class Client {
     public DictionaryAPI dicAPI;
     public Word word;
 
-    public void Client(){}
+    public void Client(){
+    }
 
     public static void main(String[] args) throws Exception{
         Client client = new Client();
-        Shell shell = ShellFactory.createConsoleShell("DIC", "<----------------------->\n   Welcome to Spanish/\n    English Dictonary\n<----------------------->\n- ?help for instructions", client);
+        Shell shell = ShellFactory.createConsoleShell("DIC", "<----------------------->\n   Welcome to Spanish/\n    English Dictonary\n<----------------------->\n- ?help for instructions\n- ?list for commands", client);
         shell.commandLoop();
     }
 
@@ -43,6 +45,22 @@ public class Client {
 
     @Command(description = "Find a Word")
     public String findWord(@Param(name="Spanish Word")String spanishWord){
-        return "The English for " + spanishWord + " is " + dicAPI.searchHeap(spanishWord) ;
+        return "The English for " + spanishWord + " is " + dicAPI.searchHeap(spanishWord);
+    }
+
+    @Command(description = "Loads Sorted Array")
+    public String loadSorted() throws Exception{
+        dicAPI.primeSorted();
+        return "sorted loaded";
+    }
+
+    @Command(description = "View sorted Array")
+    public String getSorted() {
+        return dicAPI.getSorted();
+    }
+
+    @Command(description = "search sorted Array")
+    public String findSorted(@Param(name="Spanish Word")String spanishWord){
+        return "The English for " + spanishWord + " is " + dicAPI.searchSorted(spanishWord);
     }
 }

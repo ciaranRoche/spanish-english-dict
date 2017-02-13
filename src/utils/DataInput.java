@@ -4,8 +4,7 @@ import edu.princeton.cs.introcs.In;
 import models.Word;
 
 import java.io.File;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 /**
  * Created by ciaran on 07/02/2017.
@@ -36,4 +35,5 @@ public class DataInput {
         }
         return words;
     }
+
 }
