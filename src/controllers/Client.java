@@ -45,22 +45,6 @@ public class Client {
 
     @Command(description = "Find a Word")
     public String findWord(@Param(name="Spanish Word")String spanishWord){
-        return "The English for " + spanishWord + " is " + dicAPI.searchHeap(spanishWord);
-    }
-
-    @Command(description = "Loads Sorted Array")
-    public String loadSorted() throws Exception{
-        dicAPI.primeSorted();
-        return "sorted loaded";
-    }
-
-    @Command(description = "View sorted Array")
-    public String getSorted() {
-        return dicAPI.getSorted();
-    }
-
-    @Command(description = "search sorted Array")
-    public String findSorted(@Param(name="Spanish Word")String spanishWord){
-        return "The English for " + spanishWord + " is " + dicAPI.searchSorted(spanishWord);
+        return "The English for " + spanishWord + " is " + dicAPI.searchHeap(spanishWord, 0);
     }
 }

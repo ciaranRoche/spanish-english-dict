@@ -1,4 +1,6 @@
 package utils;
+import models.Word;
+
 import java.util.ArrayList;
 import java.util.NoSuchElementException;
 
@@ -14,6 +16,7 @@ public class Heap<T extends Comparable<T>> {
         heap = new ArrayList<T>();
     }
 
+
     public void siftUp(){
         boolean check = true;
         int k = heap.size() - 1;
@@ -21,7 +24,6 @@ public class Heap<T extends Comparable<T>> {
             int p = (k-1)/2;
             T item = heap.get(k);
             T parent = heap.get(p);
-
             if(item.compareTo(parent) > 0){
                 heap.set(k, parent);
                 heap.set(p, item);
@@ -31,6 +33,28 @@ public class Heap<T extends Comparable<T>> {
                 check = false;
             }
         }
+    }
+
+    public T search(Word item) {
+        boolean check = true;
+        int k = 0;
+        int l = 2 * k + 1;
+        T temp = null;
+        while ((l < heap.size()) && (check)) {
+            int max = l, r = l + l;
+            if (r < heap.size()) {
+                if (!heap.get(r).equals(item)) {
+                    max++;
+                }
+            }
+            if (heap.get(k).equals(item)) {
+                temp = heap.get(k);
+                return temp;
+            }else{
+                check = false;
+            }
+        }
+        return temp;
     }
 
     public void siftDown(){
@@ -88,4 +112,9 @@ public class Heap<T extends Comparable<T>> {
     public String toString(){
         return heap.toString();
     }
+
+    public int size(){
+        return heap.size();
+    }
+
 }
