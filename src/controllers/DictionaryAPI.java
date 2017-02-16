@@ -100,33 +100,33 @@ public class DictionaryAPI {
         }
     }
 
-    public static String searchHeap(String spanishWord, int index){
+    public static String searchHeap(String searchWord, int index){
         int k = index;
         int l = 2 * k + 1;
         int r = l + 1;
 
         if(index == 0) {
-            if (heapArray.get(k).getSpanishWord().equals((spanishWord))) {
+            if (heapArray.get(k).spanishWord.equals((searchWord))) {
                 return heapArray.get(k).englishWord;
             }
         }
         if (l < heapArray.size()) {
-            if (heapArray.get(l).spanishWord.equals((spanishWord))) {
+            if (heapArray.get(l).spanishWord.equals((searchWord))) {
                 return heapArray.get(l).englishWord;
             }
             String leftChild;
-            if(heapArray.get(l).spanishWord.compareTo(spanishWord) > 0) {
-                leftChild = searchHeap(spanishWord, l);
+            if(heapArray.get(l).spanishWord.compareTo(searchWord) > 0) {
+                leftChild = searchHeap(searchWord, l);
                 if(leftChild != "") {
                     return leftChild;
                 }
             }
             if (r < heapArray.size()) {
-                if(heapArray.get(r).spanishWord.equals((spanishWord))) {
+                if(heapArray.get(r).spanishWord.equals((searchWord))) {
                     return heapArray.get(r).englishWord;
                 }
-                if(heapArray.get(r).spanishWord.compareTo(spanishWord) > 0) {
-                    String rightChild = searchHeap(spanishWord, r);
+                if(heapArray.get(r).spanishWord.compareTo(searchWord) > 0) {
+                    String rightChild = searchHeap(searchWord, r);
                     if(rightChild != "") {
                         return rightChild;
                     } else {
