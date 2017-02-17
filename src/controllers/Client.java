@@ -10,6 +10,8 @@ import utils.Heap;
 
 /**
  * Created by ciaran on 08/02/2017.
+ * Class of type method to which allows user interact with the code by means of using the console
+ * This class implements the cliche library to give pleasing and easy to use console menu system.
  */
 public class Client {
     public Heap heap;

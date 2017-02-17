@@ -7,6 +7,7 @@ import java.util.NoSuchElementException;
 
 /**
  * Created by ciaran on 06/02/2017.
+ * Class of Type Generic Heap which extends Comparable Generic
  */
 public class Heap<T extends Comparable<T>> {
 
@@ -16,7 +17,12 @@ public class Heap<T extends Comparable<T>> {
         heap = new ArrayList<T>();
     }
 
-
+    /**
+     * Method Sift Up, used for adding an Item to heap. As their is a pattern to a heap
+     * the order to which items appear in the heap, it is possible to find a nodes parent
+     * by compairing to the parent if result is greater than 0 swap the parent for the node,
+     * keep going until parent is less than 0
+      */
     public void siftUp(){
         boolean check = true;
         int k = heap.size() - 1;
@@ -35,28 +41,11 @@ public class Heap<T extends Comparable<T>> {
         }
     }
 
-    public T search(Word item) {
-        boolean check = true;
-        int k = 0;
-        int l = 2 * k + 1;
-        T temp = null;
-        while ((l < heap.size()) && (check)) {
-            int max = l, r = l + l;
-            if (r < heap.size()) {
-                if (!heap.get(r).equals(item)) {
-                    max++;
-                }
-            }
-            if (heap.get(k).equals(item)) {
-                temp = heap.get(k);
-                return temp;
-            }else{
-                check = false;
-            }
-        }
-        return temp;
-    }
-
+    /**
+     * Similar to the sift up method, as the pattern is known, it is possible to find the
+     * children of a node. This method starts at the top node and iterates down the tree
+     * comparing parent to node and replacing where needed, used when deleting the top node.
+     */
     public void siftDown(){
         boolean check = true;
         int k = 0;
@@ -80,11 +69,17 @@ public class Heap<T extends Comparable<T>> {
         }
     }
 
+
     public void add(T newEntry){
         heap.add(newEntry);
         siftUp();
     }
 
+    /**
+     * Delete method to which deletes top node then sifts down the tree to find new top node
+     * @return
+     * @throws NoSuchElementException
+     */
     public T delete() throws NoSuchElementException{
         if(heap.size() == 0){
             throw new NoSuchElementException();

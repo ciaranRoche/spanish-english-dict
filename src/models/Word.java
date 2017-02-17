@@ -5,6 +5,12 @@ import com.google.common.base.Objects;
 
 /**
  * Created by ciaran on 07/02/2017.
+ * Class the constructs type Word, which implements Comparable
+ * This class builds two strings,one spanish word and english word
+ * The class consists of the usual getter and setters and toString
+ * Along with a compare to method to which overrides the inherited compare to method
+ * This is so type word can be compared by spanish word only
+ * Also contains an equals to method along with hash code method
  */
 public class Word implements Comparable<Word>{
     public String spanishWord;
